@@ -22,8 +22,9 @@ export class ListProductsComponent implements OnInit {
   }
   getListProducts(){
      this._productService.getListProducts().subscribe((data)=>{
-      this.listProducts.push(data);
-      console.log(data);
+      this.listProducts = data
+      console.log(this.listProducts);
     })
+
   }
 }

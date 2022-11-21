@@ -14,7 +14,7 @@ import { Product } from '../interfaces/product';
 
     getListProducts(): Observable<Product[]> {
       //Aqui estaba el error, se usó el url equivocado
-      const url = environment.endpoint + 'api/listProducts/listProductsID'
+      const url = environment.endpoint + 'api/list';
       return this.http.get<Product[]>(url,{withCredentials: true});
     }
   }
