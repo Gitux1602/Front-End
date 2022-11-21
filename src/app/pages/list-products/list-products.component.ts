@@ -3,7 +3,6 @@ import { ThisReceiver } from '@angular/compiler';
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-//import { throws } from 'assert';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -14,19 +13,17 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ListProductsComponent implements OnInit {
   
-  listProducts: Product[] = []
+  listProducts: any = []
 
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
     this.getListProducts();
-    console.log(this.listProducts);
   }
   getListProducts(){
-    this._productService.getListProducts().subscribe((data)=>{
-      this.listProducts=data;
+     this._productService.getListProducts().subscribe((data)=>{
+      this.listProducts.push(data);
       console.log(data);
     })
   }
-
 }

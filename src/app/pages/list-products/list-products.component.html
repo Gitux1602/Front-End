@@ -17,14 +17,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of listProducts" class="table-active">
-        <td>{{ item.name }}</td>
+        <td>{{ item.namep }}</td>
         <td>{{ item.description }}</td>
         <td>{{ item.price}}</td>
         <td>{{ item.stock }}</td>
         <td>
           <button [routerLink]="['/edit', item.id]" type="button" class="btn btn-success btn-sm" >Modificar</button>
           <button type="button" class="btn btn-danger btn-sm ms-2">Eliminar</button>
-          
         </td>
       </tr>
     </tbody>

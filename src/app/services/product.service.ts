@@ -8,17 +8,13 @@ import { Product } from '../interfaces/product';
 @Injectable({
     providedIn: 'root'
   })
-  export class ProductService{
-    myAppUrl: string;
-    myApiUrl: string;
+  export class ProductService{ 
     
-    
-    constructor(private http: HttpClient ){
-        this.myAppUrl = environment.endpoint;
-        this.myApiUrl = 'api/productos';
-    }
+  constructor(private http: HttpClient ){}
 
     getListProducts(): Observable<Product[]> {
-        return this.http.get<Product[]>(`${this.myAppUrl}${this.myApiUrl}`,{withCredentials: true});
-       }
+      //Aqui estaba el error, se usó el url equivocado
+      const url = environment.endpoint + 'api/listProducts/listProductsID'
+      return this.http.get<Product[]>(url,{withCredentials: true});
+    }
   }
