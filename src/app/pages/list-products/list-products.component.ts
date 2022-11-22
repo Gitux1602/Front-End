@@ -33,4 +33,5 @@ export class ListProductsComponent implements OnInit {
       this.getListProducts();
     })
   }
+
 }

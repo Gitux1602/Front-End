@@ -10,8 +10,8 @@ import { Product } from '../interfaces/product';
   })
   export class ProductService{ 
     private myAppUrl: string;
-  private myApiUrl: string;
-  constructor(private http: HttpClient ){
+    private myApiUrl: string;
+    constructor(private http: HttpClient ){
     this.myAppUrl = environment.endpoint;
     this.myApiUrl = 'api/list/'
   }
@@ -23,12 +23,11 @@ import { Product } from '../interfaces/product';
     }
     
     deleteProducts(id: number):Observable<void> {
-      //const url = environment.endpoint + 'api/list';
       return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`,{withCredentials: true});
     }
 
     saveProduct(product: Product):Observable<void>{
-     return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`,product)
+     return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`,product,{withCredentials: true})
     }
 
   }
