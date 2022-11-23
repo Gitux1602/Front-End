@@ -12,8 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class AddEditProductComponent implements OnInit {
     form: FormGroup;
-    operacion: string = 'Agregar ';
-
+    id: number;
     constructor(private fb: FormBuilder, private _productService: ProductService, private router: Router, private aRouter: ActivatedRoute) {
         this.form = this.fb.group({
             namep: ['', Validators.required],
@@ -21,15 +20,30 @@ export class AddEditProductComponent implements OnInit {
             price: [null, Validators.required],
             stock: [null, Validators.required],
         })
+        this.id = Number(aRouter.snapshot.paramMap.get('id'));
     }
 
     ngOnInit(): void {
+        if (this.id != 0) {
+            // Es editar
+            this.getProduct(this.id);
+          }
+    }
+    
+    getProduct(id: number) {
+        console.log(id);
+        this._productService.getProduct(id).subscribe((data: Product) => {
+            console.log(data);
+            this.form.setValue({
+                namep: data.namep,
+                description: data.description,
+                price: data.price,
+                stock: data.stock
+            })
+        })
     }
 
-
-
     addProduct() {
-
         const product: Product = {
             namep: this.form.value.namep,
             description: this.form.value.description,
