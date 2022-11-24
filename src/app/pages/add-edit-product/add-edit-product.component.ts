@@ -71,10 +71,5 @@ export class AddEditProductComponent implements OnInit {
         console.log('Agregado correctamente')
       })
     }
-
-
-
-
   }
-
 }
