@@ -31,7 +31,7 @@ import { Product } from '../interfaces/product';
     }
 
     updateProduct(id: number, product: Product): Observable<void> {
-      return this.http.put<void>(`${this.url}${id}`, product);
+      return this.http.put<void>(`${this.url}${id}`, product,{withCredentials: true});
     }
 
   }

@@ -4,7 +4,7 @@
 <div class="row mt-4">
     <div class="col-lg4 offset-lg-4">
         <div class="card text-white bg-primary mb-3" style="max-width: 30rem;">
-            <div class="card-header text-center">Agregar Producto</div>
+            <div class="card-header text-center">{{ operacion }} Producto</div>
             <div class="card-body">
                 <form [formGroup]="form" (ngSubmit)="addProduct()">
                     <input formControlName="namep" type="text" class="form-control" placeholder="Ingrese nombre">
@@ -28,7 +28,7 @@
                     <button routerLink="/" type="button" class="btn btn-secondary">Volver</button>
                     </div>
                     <div class="col-lg-6">
-                    <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                    <button [disabled]="form.invalid" type="submit" class="btn btn-primary" >Aceptar</button>
                     </div>
                     </div>
                     </form>
